@@ -5,6 +5,9 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // 👇 ADICIONE ESTA LINHA AQUI
+  //base: "/facility-bond-site/", 
+
   plugins: [react(),tailwindcss()],
   resolve: {
     alias: {
@@ -23,5 +26,3 @@ export default defineConfig({
     historyApiFallback: true,
   },
 })
-
-

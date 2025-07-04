@@ -409,7 +409,7 @@ const Cases = () => {
               {clientes.map((cliente, index) => (
                 <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5">
                   <div className="p-1">
-                      <div className="bg-white backdrop-blur-sm rounded-lg h-28 flex items-center justify-center p-4 transition-all duration-300 ">
+                      <div className="bg-white backdrop-blur-sm rounded-lg h-28 flex items-center justify-center p-4 transition-all duration-300 hover:bg-white/20">
                         <img
                           src={cliente.logo}
                           alt={cliente.name}
