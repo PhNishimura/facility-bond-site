@@ -24,6 +24,7 @@ import logoVinci from '../assets/logos/vinci.png';
 import logoSnef from '../assets/logos/snef.png';
 import logoNova from '../assets/logos/novaengevio.png'
 import logoDetronic from '../assets/logos/detronic.png'
+import logoacte from '../assets/logos/actemium.png'
 const Home = () => {
   const segmentos = [
     {
@@ -56,6 +57,7 @@ const Home = () => {
     { name: "Snef", logo: logoSnef },
     { name: "Nova", logo: logoNova },
     { name: "Detronic", logo: logoDetronic },
+    { name: "Actemium", logo: logoacte }
     // Adicione mais clientes aqui
     // Ex: { name: "Outro Cliente", logo: logoOutroCliente },
   ]
@@ -71,9 +73,9 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="font-inter font-bold text-4xl md:text-6xl mb-6">
-              Superamos riscos.<br />
-              Valorizamos projetos.<br />
-              Garantimos negócios.
+              Superamos riscos<br />
+              Valorizamos projetos<br />
+              Garantimos negócios
             </h1>
             <p className="font-open-sans text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-fb-gray-light">
               Acreditamos que cada patrimônio e projeto merece proteção personalizada.
@@ -108,7 +110,7 @@ const Home = () => {
               Quem Somos
             </h2>
             <p className="font-open-sans text-lg text-fb-blue-deep max-w-4xl mx-auto mb-8">
-              Com mais de três décadas de atuação no mercado, a Facility & Bond acumula experiência na estruturação de seguros estratégicos e personalizados para grandes projetos.
+              Com quase três décadasde atuação no mercado, a Facility & Bond acumula experiência na estruturação de seguros estratégicos e personalizados para grandes projetos.
             </p>
             <Button 
               asChild
@@ -130,7 +132,7 @@ const Home = () => {
               Nossos Produtos e Serviços
             </h2>
             <p className="font-open-sans text-lg text-fb-blue-deep max-w-3xl mx-auto">
-              Oferecemos soluções completas em seguros corporativos, com foco em riscos complexos e atendimento personalizado para cada necessidade.
+              Oferecemos soluções completas em seguros corporativos com atendimento personalizado para cada necessidade.
             </p>
           </div>
 
@@ -163,7 +165,7 @@ const Home = () => {
               className="bg-fb-blue-deep hover:bg-fb-blue-deep/90 text-white font-inter font-semibold"
             >
               <Link to="/segmentos">
-                Ver Todos os Segmentos <ArrowRight className="ml-2 h-4 w-4" />
+                Ver Todos os Produtos <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -228,7 +230,7 @@ const Home = () => {
                 Como atuamos com projetos
               </h2>
               <p className="font-open-sans text-lg text-gray-700 mb-6">
-                Trabalhamos de forma consultiva e personalizada. Rumo às três décadas de história e inovação, navegamos pelas complexidades do mercado segurador, criando soluções sob medida que combinam diferentes coberturas para atender necessidades específicas.
+                Trabalhamos de forma consultiva e personalizada. Com três décadas de história e inovação, navegamos pelas complexidades do mercado segurador, criando soluções sob medida que combinam diferentes coberturas para atender necessidades específicas.
               </p>
               <p className="font-open-sans text-lg text-gray-700 mb-8">
                 Nossa abordagem vai além do papel tradicional de corretora para nos tornarmos verdadeiros parceiros estratégicos, construindo relacionamentos duradouros baseados em confiança mútua.

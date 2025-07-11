@@ -1,50 +1,12 @@
-import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MessageCircle, Mail, Phone, CheckCircle, Send } from 'lucide-react'
+import { MessageCircle, Mail, Phone, CheckCircle } from 'lucide-react'
 
 const Cotacao = () => {
-  const [formData, setFormData] = useState({
-    nome: '',
-    empresa: '',
-    cnpj: '',
-    telefone: '',
-    email: '',
-    segmento: '',
-    produto: '',
-    descricao: ''
-  })
-
-  const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Aqui seria implementada a integração com CRM/gestão
-    console.log('Dados do formulário:', formData)
-    alert('Cotação enviada com sucesso! Entraremos em contato em breve.')
-  }
-
-  const segmentos = [
-    "Garantias e Fianças",
-    "Patrimônio e Operações", 
-    "Capital Humano",
-    "Riscos Especiais",
-    "Projetos"
-  ]
-
   const faqItems = [
     {
       pergunta: "Quanto tempo leva para receber uma cotação?",
-      resposta: "Normalmente respondemos em até 24 horas úteis. Para casos mais complexos, pode levar até 48 horas para uma análise completa."
+      resposta: "Normalmente respondemos em até 24/48 horas úteis. Casos mais complexos exigem uma avaliação mais detalhada, o que pode estender o tempo de resposta."
     },
     {
       pergunta: "Preciso fornecer muita documentação?",
@@ -83,10 +45,6 @@ const Cotacao = () => {
               </div>
               <div className="flex items-center">
                 <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
-                <span>Resposta em 24h</span>
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
                 <span>Sem Compromisso</span>
               </div>
             </div>
@@ -96,153 +54,46 @@ const Cotacao = () => {
 
       {/* Formulário Principal */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Formulário */}
-            <div className="lg:col-span-2">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            {/* Formulário Pipefy */}
+            <div className="lg:col-span-3">
               <Card>
                 <CardContent className="p-8">
                   <h2 className="font-inter font-bold text-2xl text-fb-blue-deep mb-6">
                     Solicitar Cotação
                   </h2>
                   
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="nome" className="font-inter font-medium text-fb-blue-deep">
-                          Nome Completo *
-                        </Label>
-                        <Input
-                          id="nome"
-                          type="text"
-                          value={formData.nome}
-                          onChange={(e) => handleInputChange('nome', e.target.value)}
-                          className="mt-1"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="empresa" className="font-inter font-medium text-fb-blue-deep">
-                          Empresa *
-                        </Label>
-                        <Input
-                          id="empresa"
-                          type="text"
-                          value={formData.empresa}
-                          onChange={(e) => handleInputChange('empresa', e.target.value)}
-                          className="mt-1"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="cnpj" className="font-inter font-medium text-fb-blue-deep">
-                          CNPJ *
-                        </Label>
-                        <Input
-                          id="cnpj"
-                          type="text"
-                          value={formData.cnpj}
-                          onChange={(e) => handleInputChange('cnpj', e.target.value)}
-                          placeholder="00.000.000/0000-00"
-                          className="mt-1"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="telefone" className="font-inter font-medium text-fb-blue-deep">
-                          Telefone *
-                        </Label>
-                        <Input
-                          id="telefone"
-                          type="tel"
-                          value={formData.telefone}
-                          onChange={(e) => handleInputChange('telefone', e.target.value)}
-                          placeholder="(11) 99999-9999"
-                          className="mt-1"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="email" className="font-inter font-medium text-fb-blue-deep">
-                        E-mail *
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="mt-1"
-                        required
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="segmento" className="font-inter font-medium text-fb-blue-deep">
-                          Segmento de Interesse *
-                        </Label>
-                        <Select onValueChange={(value) => handleInputChange('segmento', value)}>
-                          <SelectTrigger className="mt-1">
-                            <SelectValue placeholder="Selecione um segmento" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {segmentos.map((segmento) => (
-                              <SelectItem key={segmento} value={segmento}>
-                                {segmento}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <Label htmlFor="produto" className="font-inter font-medium text-fb-blue-deep">
-                          Produto Específico
-                        </Label>
-                        <Input
-                          id="produto"
-                          type="text"
-                          value={formData.produto}
-                          onChange={(e) => handleInputChange('produto', e.target.value)}
-                          placeholder="Ex: Seguro Garantia, D&O, etc."
-                          className="mt-1"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="descricao" className="font-inter font-medium text-fb-blue-deep">
-                        Descrição do Projeto/Necessidade
-                      </Label>
-                      <Textarea
-                        id="descricao"
-                        value={formData.descricao}
-                        onChange={(e) => handleInputChange('descricao', e.target.value)}
-                        placeholder="Descreva brevemente seu projeto ou necessidade de seguro..."
-                        className="mt-1 min-h-[120px]"
-                      />
-                    </div>
-
-                    <Button 
-                      type="submit"
-                      className="w-full bg-fb-blue-deep hover:bg-fb-blue-deep/90 text-white font-inter font-semibold"
-                      size="lg"
-                    >
-                      <Send className="mr-2 h-5 w-5" />
-                      Enviar Solicitação
-                    </Button>
-                  </form>
+                  {/* Iframe do Pipefy */}
+                  <div className="w-full">
+                    <iframe
+                      src="https://app.pipefy.com/public/form/5vHeaoMi"
+                      width="100%"
+                      height="800"
+                      frameBorder="0"
+                      style={{
+                        border: 'none',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                      }}
+                      title="Formulário de Cotação - Facility & Bond"
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <p className="text-sm text-blue-800">
+                      <CheckCircle className="inline h-4 w-4 mr-2" />
+                      Seus dados são protegidos e utilizados apenas para elaboração da cotação.
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </div>
 
             {/* Informações de Contato */}
-            <div className="space-y-6">
-              <Card>
+            <div className="space-y-8">
+              <Card className="w-full">
                 <CardContent className="p-6">
                   <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-4">
                     Outras Formas de Contato
@@ -274,7 +125,7 @@ const Cotacao = () => {
                     </a>
 
                     <a 
-                      href="tel:+5511999999999"
+                      href="tel:+551144188329"
                       className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                     >
                       <Phone className="h-6 w-6 text-gray-600 mr-3" />
@@ -287,7 +138,7 @@ const Cotacao = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="w-full">
                 <CardContent className="p-6">
                   <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-4">
                     Por que escolher a Facility & Bond?
@@ -297,7 +148,7 @@ const Cotacao = () => {
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                       <p className="font-open-sans text-sm text-gray-700">
-                        30 anos de expertise em seguros corporativos
+                        Experiência consolidada em seguros corporativos há quase três décadas
                       </p>
                     </div>
                     <div className="flex items-start">
@@ -396,4 +247,3 @@ const Cotacao = () => {
 }
 
 export default Cotacao
-

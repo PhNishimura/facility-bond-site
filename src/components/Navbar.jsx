@@ -29,7 +29,7 @@ const Navbar = () => {
               <img 
                 src={logoAzul} 
                 alt="Facility & Bond" 
-                className="h-8 w-auto"
+                className="h-12 w-auto"
               />
             </Link>
           </div>

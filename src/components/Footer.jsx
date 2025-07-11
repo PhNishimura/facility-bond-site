@@ -15,14 +15,16 @@ const Footer = () => {
             <img 
               src={logoCinza} 
               alt="Facility & Bond" 
-              className="h-12 w-auto mb-4 filter brightness-0 invert"
+              className="h-18 w-auto mb-4 filter brightness-0 invert"
             />
             <p className="font-open-sans text-gray-300 mb-4 max-w-md">
               Há três décadas, construímos pontes entre sonhos empresariais e sua realização segura, 
               transformando complexidade em clareza, riscos em oportunidades.
             </p>
             <p className="font-inter font-semibold text-lg text-white">
-              Superamos riscos. Valorizamos projetos. Garantimos negócio.
+              Superamos riscos<br />
+              Valorizamos projetos<br />
+              Garantimos negócios
             </p>
           </div>
 

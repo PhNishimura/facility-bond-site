@@ -5,7 +5,7 @@ import { Building, Zap, Globe, Calendar, MapPin, ArrowRight, CheckCircle } from 
 import { useRef } from 'react'
 import Autoplay from "embla-carousel-autoplay"
 
-// 1. Importar os componentes do Carrossel
+// 1. Componentes do Carrossel
 import {
   Carousel,
   CarouselContent,
@@ -14,7 +14,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-// 2. Importar os logos dos clientes
+// 2. Logos dos clientes
 import logoAlupar from '../assets/logos/alupar.png';
 import logoWTorre from '../assets/logos/wtorre.png';
 import logoLyon from '../assets/logos/lyon.png';
@@ -22,32 +22,45 @@ import logoVinci from '../assets/logos/vinci.png';
 import logoSnef from '../assets/logos/snef.png';
 import logoNova from '../assets/logos/novaengevio.png';
 import logoDetronic from '../assets/logos/detronic.png';
-// Lembre-se de adicionar os logos para Engevix e Luzes Paulistanas se os tiver
-// import logoEngevix from '../assets/logos/engevix.png';
-// import logoLuzes from '../assets/logos/luzespaulistanas.png';
+import logoacte from '../assets/logos/actemium.png'
+
+// 3. Imagens dos projetos
+import picAlians from '../assets/jobs/alians.jpg'
+import picAlto from '../assets/jobs/alto.jpg'
+import picChile from '../assets/jobs/chile.jpg'
+import picEate from '../assets/jobs/eate.jpg'
+import picIlu from '../assets/jobs/iluminacao.jpeg'
+import picFoz from '../assets/jobs/uheFoz.jpg'
+import picIju from '../assets/jobs/uheIjui.jpg'
+import picSao from '../assets/jobs/uheSaoRoque.jpg'
+
 
 const Cases = () => {
+  // Adicionando a propriedade 'imagem' a cada projeto
   const casesEnergia = [
     {
       nome: "UHE São Roque",
       cliente: "Engevix",
       capacidade: "141,9 MW",
       conclusao: "2022",
-      tipo: "Usina Hidrelétrica"
+      tipo: "Usina Hidrelétrica",
+      imagem: picSao
     },
     {
       nome: "UHE Ijuí",
       cliente: "Alupar",
       capacidade: "51 MW",
       conclusao: "2012",
-      tipo: "Usina Hidrelétrica"
+      tipo: "Usina Hidrelétrica",
+      imagem: picIju
     },
     {
       nome: "UHE Foz do Rio Claro",
       cliente: "Alupar",
       capacidade: "68,4 MW",
       conclusao: "2012",
-      tipo: "Usina Hidrelétrica"
+      tipo: "Usina Hidrelétrica",
+      imagem: picFoz
     },
     {
       nome: "EATE Transmission Line",
@@ -55,14 +68,16 @@ const Cases = () => {
       capacidade: "1.200 MW",
       extensao: "924 km",
       conclusao: "2003",
-      tipo: "Linha de Transmissão"
+      tipo: "Linha de Transmissão",
+      imagem: picEate
     },
     {
-      nome: "Projeto de Iluminação Pública de SP",
+      nome: "Iluminação Pública de SP",
       cliente: "Luzes Paulistanas",
       valor: "R$ 7,3 bilhões",
       prazo: "20 anos de contrato",
-      tipo: "Infraestrutura Urbana"
+      tipo: "Infraestrutura Urbana",
+      imagem: picIlu
     }
   ]
 
@@ -72,25 +87,27 @@ const Cases = () => {
       cliente: "WTorre",
       area: "190.000 m²",
       conclusao: "2016",
-      tipo: "Arena Esportiva"
+      tipo: "Arena Esportiva",
+      imagem: picAlians
     },
     {
       nome: "Complexo Alto das Nações",
       cliente: "WTorre",
       area: "320.000 m²",
       fases: "Fase 1: 2022, Fase 2: 2025",
-      tipo: "Complexo Comercial"
+      tipo: "Complexo Comercial",
+      imagem: picAlto
     },
     {
       nome: "Aeroporto de Santiago - Chile",
       cliente: "Vinci",
       escopo: "Fachada",
       conclusao: "2022",
-      tipo: "Infraestrutura Aeroportuária"
+      tipo: "Infraestrutura Aeroportuária",
+      imagem: picChile
     }
   ]
   
-  // 3. Array de clientes com objetos para o carrossel
   const clientes = [
     { name: "Alupar", logo: logoAlupar },
     { name: "WTorre", logo: logoWTorre },
@@ -99,13 +116,13 @@ const Cases = () => {
     { name: "Snef", logo: logoSnef },
     { name: "Nova", logo: logoNova },
     { name: "Detronic", logo: logoDetronic },
-    // Adicione os outros clientes com seus logos aqui
+    { name: "Actemium", logo: logoacte }
   ]
 
   const faqItems = [
     {
       pergunta: "Como a Facility & Bond estrutura projetos complexos?",
-      resposta: "Utilizamos nossa expertise de 30 anos para criar soluções sob medida, combinando diferentes coberturas e trabalhando de forma consultiva em todas as etapas do projeto."
+      resposta: "Utilizamos nossa expertise construída ao longo de quase três décadas para criar soluções sob medida, combinando diferentes coberturas e atuando de forma consultiva em todas as etapas do projeto."
     },
     {
       pergunta: "Qual o diferencial em projetos de grande porte?",
@@ -121,7 +138,6 @@ const Cases = () => {
     }
   ]
   
-  // 4. Configuração do plugin de autoplay
   const plugin = useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   )
@@ -139,20 +155,11 @@ const Cases = () => {
               Transformamos riscos em oportunidades por meio de inteligência e precisão. Conheça alguns dos projetos que ajudamos a tirar do papel com segurança, estratégia e resultados.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-white text-fb-blue-deep hover:bg-gray-100 font-inter font-semibold"
-              >
+              <Button asChild size="lg" className="bg-white text-fb-blue-deep hover:bg-gray-100 font-inter font-semibold">
                 <Link to="/cotacao">Solicitar Cotação</Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="bg-white text-fb-blue-deep hover:bg-gray-100 font-inter font-semibold"
-              >
-                <Link to="/sobre-nos">Nossa História</Link>
+              <Button asChild variant="outline" size="lg" className="bg-white text-fb-blue-deep hover:bg-gray-100 font-inter font-semibold">
+                <Link to="/marcar-reuniao">Marcar Reunião</Link>
               </Button>
             </div>
           </div>
@@ -174,63 +181,54 @@ const Cases = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {casesEnergia.map((projeto, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-2">
+              <Card key={index} className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <img 
+                  src={projeto.imagem} 
+                  alt={`Imagem do projeto ${projeto.nome}`}
+                  className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6
+                                opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="font-inter font-bold text-xl text-white mb-2">
                       {projeto.nome}
                     </h3>
-                    <p className="font-open-sans text-sm text-gray-600 mb-2">
-                      Cliente: {projeto.cliente}
-                    </p>
-                    <span className="inline-block bg-fb-blue-deep/10 text-fb-blue-deep text-xs font-medium px-2 py-1 rounded">
-                      {projeto.tipo}
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-2 text-sm">
-                    {projeto.capacidade && (
-                      <div className="flex items-center">
-                        <Zap className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="font-open-sans text-gray-600">
-                          Capacidade: {projeto.capacidade}
-                        </span>
-                      </div>
-                    )}
-                    {projeto.extensao && (
-                      <div className="flex items-center">
-                        <MapPin className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="font-open-sans text-gray-600">
-                          Extensão: {projeto.extensao}
-                        </span>
-                      </div>
-                    )}
-                    {projeto.valor && (
-                      <div className="flex items-center">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="font-open-sans text-gray-600">
-                          Valor: {projeto.valor}
-                        </span>
-                      </div>
-                    )}
-                    {projeto.prazo && (
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="font-open-sans text-gray-600">
-                          {projeto.prazo}
-                        </span>
-                      </div>
-                    )}
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-gray-400 mr-2" />
-                      <span className="font-open-sans text-gray-600">
-                        Conclusão: {projeto.conclusao}
-                      </span>
+                    <div className="space-y-2 text-sm border-t border-white/20 pt-3 mt-3">
+                      {projeto.capacidade && (
+                        <div className="flex items-center text-gray-200">
+                          <Zap className="h-4 w-4 mr-2 flex-shrink-0" />
+                          <span>Capacidade: {projeto.capacidade}</span>
+                        </div>
+                      )}
+                      {projeto.extensao && (
+                        <div className="flex items-center text-gray-200">
+                          <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
+                          <span>Extensão: {projeto.extensao}</span>
+                        </div>
+                      )}
+                      {projeto.valor && (
+                        <div className="flex items-center text-gray-200">
+                          <CheckCircle className="h-4 w-4 mr-2 flex-shrink-0" />
+                          <span>Valor: {projeto.valor}</span>
+                        </div>
+                      )}
+                      {projeto.prazo && (
+                         <div className="flex items-center text-gray-200">
+                           <Calendar className="h-4 w-4 mr-2 flex-shrink-0" />
+                           <span>{projeto.prazo}</span>
+                         </div>
+                       )}
+                       {projeto.conclusao && (
+                         <div className="flex items-center text-gray-200">
+                           <Calendar className="h-4 w-4 mr-2 flex-shrink-0" />
+                           <span>Conclusão: {projeto.conclusao}</span>
+                         </div>
+                       )}
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             ))}
           </div>
@@ -252,47 +250,40 @@ const Cases = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {casesImobiliario.map((projeto, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 bg-white">
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-2">
+               <Card key={index} className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <img 
+                  src={projeto.imagem} 
+                  alt={`Imagem do projeto ${projeto.nome}`}
+                  className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6
+                                opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="font-inter font-bold text-xl text-white mb-2">
                       {projeto.nome}
                     </h3>
-                    <p className="font-open-sans text-sm text-gray-600 mb-2">
-                      Cliente: {projeto.cliente}
-                    </p>
-                    <span className="inline-block bg-fb-blue-deep/10 text-fb-blue-deep text-xs font-medium px-2 py-1 rounded">
-                      {projeto.tipo}
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-2 text-sm">
-                    {projeto.area && (
-                      <div className="flex items-center">
-                        <Building className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="font-open-sans text-gray-600">
-                          Área: {projeto.area}
-                        </span>
+                    <div className="space-y-2 text-sm border-t border-white/20 pt-3 mt-3">
+                      {projeto.area && (
+                        <div className="flex items-center text-gray-200">
+                          <Building className="h-4 w-4 mr-2 flex-shrink-0" />
+                          <span>Área: {projeto.area}</span>
+                        </div>
+                      )}
+                      {projeto.escopo && (
+                        <div className="flex items-center text-gray-200">
+                          <CheckCircle className="h-4 w-4 mr-2 flex-shrink-0" />
+                          <span>Escopo: {projeto.escopo}</span>
+                        </div>
+                      )}
+                      <div className="flex items-center text-gray-200">
+                        <Calendar className="h-4 w-4 mr-2 flex-shrink-0" />
+                        <span>{projeto.fases || `Conclusão: ${projeto.conclusao}`}</span>
                       </div>
-                    )}
-                    {projeto.escopo && (
-                      <div className="flex items-center">
-                        <CheckCircle className="h-4 w-4 text-gray-400 mr-2" />
-                        <span className="font-open-sans text-gray-600">
-                          Escopo: {projeto.escopo}
-                        </span>
-                      </div>
-                    )}
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 text-gray-400 mr-2" />
-                      <span className="font-open-sans text-gray-600">
-                        {projeto.fases || `Conclusão: ${projeto.conclusao}`}
-                      </span>
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             ))}
           </div>
@@ -409,13 +400,13 @@ const Cases = () => {
               {clientes.map((cliente, index) => (
                 <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5">
                   <div className="p-1">
-                      <div className="bg-white backdrop-blur-sm rounded-lg h-28 flex items-center justify-center p-4 transition-all duration-300 hover:bg-white/20">
-                        <img
-                          src={cliente.logo}
-                          alt={cliente.name}
-                          className="max-h-16 max-w-full object-contain"
-                        />
-                      </div>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-lg h-28 flex items-center justify-center p-4 transition-all duration-300 hover:bg-white">
+                      <img
+                        src={cliente.logo}
+                        alt={cliente.name}
+                        className="max-h-16 max-w-full object-contain"
+                      />
+                    </div>
                   </div>
                 </CarouselItem>
               ))}
@@ -437,20 +428,11 @@ const Cases = () => {
               Entre em contato conosco e descubra como podemos estruturar uma solução personalizada para viabilizar seu projeto com segurança e eficiência.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-fb-blue-deep hover:bg-fb-blue-deep/90 text-white font-inter font-semibold"
-              >
+              <Button asChild size="lg" className="bg-fb-blue-deep hover:bg-fb-blue-deep/90 text-white font-inter font-semibold">
                 <Link to="/cotacao">Solicitar Cotação</Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-fb-blue-deep text-fb-blue-deep hover:bg-fb-blue-deep hover:text-white font-inter font-semibold"
-              >
-                <a href="mailto:contato@facilitybond.com.br">Enviar E-mail</a>
+              <Button asChild variant="outline" size="lg" className="border-fb-blue-deep text-fb-blue-deep hover:bg-fb-blue-deep hover:text-white font-inter font-semibold transition-colors">
+                  <Link to="/marcar-reuniao">Marcar Reunião</Link>
               </Button>
             </div>
           </div>
@@ -469,14 +451,14 @@ const Cases = () => {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {faqItems.map((item, index) => (
-              <Card key={index} className="bg-white">
+              <Card key={index} className="bg-white overflow-hidden">
                 <CardContent className="p-6">
                   <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-3">
                     {item.pergunta}
                   </h3>
-                  <p className="font-open-sans text-gray-700">
+                  <p className="font-open-sans text-gray-700 leading-relaxed">
                     {item.resposta}
                   </p>
                 </CardContent>
@@ -488,10 +470,7 @@ const Cases = () => {
             <p className="font-open-sans text-gray-600 mb-4">
               Tem um projeto em mente? Vamos conversar!
             </p>
-            <Button
-              asChild
-              className="bg-fb-blue-deep hover:bg-fb-blue-deep/90 text-white font-inter font-semibold"
-            >
+            <Button asChild className="bg-fb-blue-deep hover:bg-fb-blue-deep/90 text-white font-inter font-semibold">
               <Link to="/cotacao">
                 Falar com Especialista <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
