@@ -13,6 +13,8 @@ import SegmentoRCRE from './pages/SegmentoRCRE'
 import SegmentoBeneficios from './pages/SegmentoBeneficios'
 import SegmentoOutros from './pages/SegmentoOutros'
 import ScrollToTop from './components/ScrollToTop' // Importe o novo componente
+import FloatingWhatsAppButton from './components/FloatingWhatsAppButton' // 1. Importe o novo componente
+
 import './App.css'
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      <FloatingWhatsAppButton />
     </Router>
   )
 }

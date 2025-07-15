@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Shield, Users, Target, CheckCircle, ArrowRight } from 'lucide-react'
-import { useRef } from 'react' // 1. Importar o useRef para o plugin
-import Autoplay from "embla-carousel-autoplay" // 2. Importar o plugin de autoplay
+import { useRef } from 'react'
+import Autoplay from "embla-carousel-autoplay"
 
-// 3. Importar os componentes do Carrossel
 import {
   Carousel,
   CarouselContent,
@@ -14,8 +13,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-// 4. Importar o GIF e os logos dos clientes
-import seuGif from '../assets/viragif.gif';
+// --- INÍCIO DA ALTERAÇÃO ---
+
+// 1. Importe o vídeo em vez do GIF
+import videoBackground from '../assets/VIDEO_EMP.mp4'; 
+
+// --- FIM DA ALTERAÇÃO ---
 
 import logoAlupar from '../assets/logos/alupar.png';
 import logoWTorre from '../assets/logos/wtorre.png';
@@ -25,6 +28,7 @@ import logoSnef from '../assets/logos/snef.png';
 import logoNova from '../assets/logos/novaengevio.png'
 import logoDetronic from '../assets/logos/detronic.png'
 import logoacte from '../assets/logos/actemium.png'
+
 const Home = () => {
   const segmentos = [
     {
@@ -68,9 +72,26 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
+      {/* --- INÍCIO DA ALTERAÇÃO --- */}
       {/* Hero Section - "What" */}
-      <section className="relative text-white py-20 bg-cover bg-center" style={{ backgroundImage: `url(${seuGif})` }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 2. Remova o style e adicione classes para posicionamento */}
+      <section className="relative text-white flex items-center justify-center h-[80vh]">
+
+        
+        {/* 3. Adicione a tag de vídeo para o background */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+        >
+          <source src={videoBackground} type="video/mp4" />
+          Seu navegador não suporta vídeos em HTML5.
+        </video>
+
+        {/* 4. Mantenha o conteúdo em um container para garantir a sobreposição */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center">
             <h1 className="font-inter font-bold text-4xl md:text-6xl mb-6">
               Superamos riscos<br />
@@ -100,6 +121,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* --- FIM DA ALTERAÇÃO --- */}
 
 
       {/* Quem Somos + História */}
@@ -222,10 +244,9 @@ const Home = () => {
       {/* Hero Section - "Who" */}
       <section className="py-16 bg-fb-gray-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* --- INÍCIO DA ALTERAÇÃO --- */}
           <div className="text-center">
             
-            <div className="max-w-4xl mx-auto"> {/* Container para limitar a largura do texto */}
+            <div className="max-w-4xl mx-auto">
               <h2 className="font-inter font-bold text-3xl md:text-4xl text-fb-blue-deep mb-6">
                 Como atuamos com projetos
               </h2>
@@ -239,7 +260,7 @@ const Home = () => {
             
             <Button 
               asChild
-              size="lg" // Tamanho do botão um pouco maior para mais destaque
+              size="lg"
               className="bg-fb-blue-deep hover:bg-fb-blue-deep/90 text-white font-inter font-semibold"
             >
               <Link to="/cases">
@@ -248,7 +269,6 @@ const Home = () => {
             </Button>
 
           </div>
-          {/* --- FIM DA ALTERAÇÃO --- */}
         </div>
       </section>
 
@@ -266,7 +286,6 @@ const Home = () => {
             </p>
           </div>
 
-          {/* 7. Implementação do Carrossel */}
           <Carousel
             plugins={[plugin.current]}
             className="w-full max-w-6xl mx-auto"
@@ -337,4 +356,3 @@ const Home = () => {
 }
 
 export default Home
-

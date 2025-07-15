@@ -45,6 +45,24 @@ const SobreNos = () => {
               Nossa expertise não está apenas em intermediar seguros, mas em desenhar proteções tão únicas quanto os projetos que salvaguardamos. Mergulhamos profundamente no universo de cada cliente para emergir com soluções que transcendem o convencional.
             </p>
           </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <Button 
+              asChild
+              size="lg"
+              className="bg-white text-fb-blue-deep hover:bg-gray-100 font-inter font-semibold"
+            >
+              <Link to="/cotacao">Solicitar Cotação</Link>
+            </Button>
+            <Button 
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-white text-fb-blue-deep bg-white hover:bg-fb-blue-deep hover:text-white font-inter font-semibold"
+            >
+              <Link to="/marcar-reuniao">Marcar Reunião</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -66,6 +84,22 @@ const SobreNos = () => {
               <p className="font-open-sans text-lg text-fb-blue-deep">
                 Somos reconhecidos por clientes, seguradoras e resseguradoras pela capacidade de criar soluções que atendem precisamente às necessidades de todas as partes envolvidas.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <Button 
+                  asChild
+                  size="lg"
+                  className="bg-fb-blue-deep text-white hover:bg-gray-100 font-inter font-semibold"
+                >
+                  <Link to="/cotacao">Solicitar Cotação</Link>
+                </Button>
+                <Button 
+                  asChild
+                  size="lg"
+                  className="bg-fb-blue-deep text-white hover:bg-gray-100 font-inter font-semibold"
+                >
+                  <Link to="/marcar-reuniao">Marcar Reunião</Link>
+                </Button>
+              </div>
             </div>
             <div className="bg-gray-200 backdrop-blur-sm p-8 rounded-lg">
               <div className="text-center">

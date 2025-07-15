@@ -33,6 +33,7 @@ import picIlu from '../assets/jobs/iluminacao.jpeg'
 import picFoz from '../assets/jobs/uheFoz.jpg'
 import picIju from '../assets/jobs/uheIjui.jpg'
 import picSao from '../assets/jobs/uheSaoRoque.jpg'
+import picCamp from '../assets/jobs/campoPequeno.jpg'
 
 
 const Cases = () => {
@@ -105,6 +106,17 @@ const Cases = () => {
       conclusao: "2022",
       tipo: "Infraestrutura Aeroportuária",
       imagem: picChile
+    }
+  ]
+
+  const casesTec = [
+    {
+      nome: "Campo Pequeno - Portugal",
+      cliente: "WTorre",
+      valor: "€100 milhões",
+      conclusao: "2006",
+      tipo: "Desenvolvimento Imobiliário",
+      imagem: picCamp
     }
   ]
   
@@ -183,7 +195,7 @@ const Cases = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {casesEnergia.map((projeto, index) => (
-              <Card key={index} className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <div key={index} className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <img 
                   src={projeto.imagem} 
                   alt={`Imagem do projeto ${projeto.nome}`}
@@ -229,7 +241,7 @@ const Cases = () => {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -252,7 +264,7 @@ const Cases = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {casesImobiliario.map((projeto, index) => (
-               <Card key={index} className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+               <div key={index} className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <img 
                   src={projeto.imagem} 
                   alt={`Imagem do projeto ${projeto.nome}`}
@@ -284,7 +296,7 @@ const Cases = () => {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -305,72 +317,80 @@ const Cases = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-2">
-                    Campo Pequeno - Portugal
-                  </h3>
-                  <p className="font-open-sans text-sm text-gray-600 mb-2">
-                    Cliente: WTorre
-                  </p>
-                  <span className="inline-block bg-fb-blue-deep/10 text-fb-blue-deep text-xs font-medium px-2 py-1 rounded">
-                    Desenvolvimento Imobiliário
-                  </span>
-                </div>
-                
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-gray-400 mr-2" />
-                    <span className="font-open-sans text-gray-600">
-                      Valor: €100 milhões
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <Calendar className="h-4 w-4 text-gray-400 mr-2" />
-                    <span className="font-open-sans text-gray-600">
-                      Conclusão: 2006
-                    </span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-2">
-                    Plataforma de Análise de Crédito Online
-                  </h3>
-                  <span className="inline-block bg-fb-blue-deep/10 text-fb-blue-deep text-xs font-medium px-2 py-1 rounded">
-                    Tecnologia & Inovação
-                  </span>
-                </div>
-                
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span className="font-open-sans text-gray-600">
-                      Redução no tempo de aprovação de garantias
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span className="font-open-sans text-gray-600">
-                      Mais previsibilidade para investidores
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                    <span className="font-open-sans text-gray-600">
-                      Automação no monitoramento de riscos
-                    </span>
+          {/* Projeto com imagem - Campo Pequeno */}
+          <div className="flex justify-center mb-12">
+            <div className="w-full max-w-md">
+              {casesTec.map((projeto, index) => (
+                <div key={index} className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                  <img 
+                    src={projeto.imagem} 
+                    alt={`Imagem do projeto ${projeto.nome}`}
+                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6
+                                  opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                      <h3 className="font-inter font-bold text-xl text-white mb-2">
+                        {projeto.nome}
+                      </h3>
+                      <div className="space-y-2 text-sm border-t border-white/20 pt-3 mt-3">
+                        {projeto.valor && (
+                          <div className="flex items-center text-gray-200">
+                            <CheckCircle className="h-4 w-4 mr-2 flex-shrink-0" />
+                            <span>Valor: {projeto.valor}</span>
+                          </div>
+                        )}
+                        <div className="flex items-center text-gray-200">
+                          <Calendar className="h-4 w-4 mr-2 flex-shrink-0" />
+                          <span>Conclusão: {projeto.conclusao}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              ))}
+            </div>
           </div>
+
+          {/* PARA DEPOIS Card da Plataforma Tecnológica 
+          <div className="flex justify-center">
+            <div className="w-full max-w-md">
+              <Card className="hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="mb-4">
+                    <h3 className="font-inter font-semibold text-lg text-fb-blue-deep mb-2">
+                      Plataforma de Análise de Crédito Online
+                    </h3>
+                    <span className="inline-block bg-fb-blue-deep/10 text-fb-blue-deep text-xs font-medium px-2 py-1 rounded">
+                      Tecnologia & Inovação
+                    </span>
+                  </div>
+                  
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      <span className="font-open-sans text-gray-600">
+                        Redução no tempo de aprovação de garantias
+                      </span>
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      <span className="font-open-sans text-gray-600">
+                        Mais previsibilidade para investidores
+                      </span>
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      <span className="font-open-sans text-gray-600">
+                        Automação no monitoramento de riscos
+                      </span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+          */}
         </div>
       </section>
 

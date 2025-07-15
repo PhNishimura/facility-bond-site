@@ -115,7 +115,7 @@ const Segmentos = () => {
   const faqItems = [
     {
       pergunta: "Qual é o diferencial da Facility & Bond em seguros corporativos?",
-      resposta: "Ao longo de quase trinta anos, desenvolvemos uma expertise sólida e uma abordagem consultiva que nos diferenciam no mercado."
+      resposta: "Ao longo de quase três decadas, desenvolvemos uma expertise sólida e uma abordagem consultiva que nos diferenciam no mercado."
     },
     {
       pergunta: "Como funciona o processo de cotação?",
@@ -322,15 +322,6 @@ const Segmentos = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="font-open-sans text-gray-600 mb-4">
-              Não encontrou a resposta que procurava?
-            </p>
-            <Button asChild variant="outline" className="border-fb-blue-deep text-fb-blue-deep hover:bg-fb-blue-deep hover:text-white font-inter font-semibold">
-              <Link to="/cotacao">Entre em Contato</Link>
-            </Button>
           </div>
         </div>
       </section>

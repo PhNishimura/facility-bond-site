@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Zap, CheckCircle, ArrowRight, Phone, Mail } from 'lucide-react'
+import { Zap, CheckCircle, ArrowRight, Phone, Mail, MessageCircle } from 'lucide-react'
 
 const SegmentoOutros = () => {
   const produtos = [
@@ -171,11 +171,11 @@ const SegmentoOutros = () => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="bg-white text-fb-blue-deep hover:bg-gray-100 font-inter font-semibold"
+                className="border-fb-blue-deep text-fb-blue-deep hover:bg-fb-blue-deep hover:text-white font-inter font-semibold"
               >
-                <a href="tel:+5511999999999" className="flex items-center">
-                  <Phone className="mr-2 h-4 w-4" />
-                  Ligar Agora
+                <a href="https://wa.me/551144188329" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  WhatsApp
                 </a>
               </Button>
             </div>
