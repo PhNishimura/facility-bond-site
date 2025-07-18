@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Shield, Users, Target, CheckCircle, ArrowRight } from 'lucide-react'
-import { useRef } from 'react'
+// --- INÍCIO DA ALTERAÇÃO ---
+// Importa o hook useEffect, que usaremos para a lógica do vídeo
+import { useRef, useEffect } from 'react'
+// --- FIM DA ALTERAÇÃO ---
 import Autoplay from "embla-carousel-autoplay"
 
 import {
@@ -13,11 +16,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
+import videoBackground from '../assets/VIDEO_EMP.mp4';
 // --- INÍCIO DA ALTERAÇÃO ---
-
-// 1. Importe o vídeo em vez do GIF
-import videoBackground from '../assets/VIDEO_EMP.mp4'; 
-
+// Lembre-se de criar esta imagem. Pode ser um print do primeiro frame do vídeo.
+import videoPoster from '../assets/video_poster.jpg'; 
 // --- FIM DA ALTERAÇÃO ---
 
 import logoAlupar from '../assets/logos/alupar.png';
@@ -62,35 +64,50 @@ const Home = () => {
     { name: "Nova", logo: logoNova },
     { name: "Detronic", logo: logoDetronic },
     { name: "Actemium", logo: logoacte }
-    // Adicione mais clientes aqui
-    // Ex: { name: "Outro Cliente", logo: logoOutroCliente },
   ]
 
   const plugin = useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   )
 
+  // --- INÍCIO DA ALTERAÇÃO ---
+  // Lógica para garantir o autoplay do vídeo de fundo
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          // Autoplay bloqueado, o poster será exibido.
+          console.log("Autoplay do vídeo foi bloqueado pelo navegador.", error);
+        });
+      }
+    }
+  }, []); // Array vazio garante que o código rode apenas uma vez.
+  // --- FIM DA ALTERAÇÃO ---
+
   return (
     <div className="min-h-screen">
-      {/* --- INÍCIO DA ALTERAÇÃO --- */}
-      {/* Hero Section - "What" */}
-      {/* 2. Remova o style e adicione classes para posicionamento */}
       <section className="relative text-white flex items-center justify-center h-[80vh]">
-
         
-        {/* 3. Adicione a tag de vídeo para o background */}
+        {/* --- INÍCIO DA ALTERAÇÃO --- */}
+        {/* Adicionados os atributos ref, poster e preload para máxima compatibilidade */}
         <video 
+          ref={videoRef}
           autoPlay 
           loop 
           muted 
           playsInline
+          poster={videoPoster}
+          preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover -z-10"
         >
           <source src={videoBackground} type="video/mp4" />
           Seu navegador não suporta vídeos em HTML5.
         </video>
+        {/* --- FIM DA ALTERAÇÃO --- */}
 
-        {/* 4. Mantenha o conteúdo em um container para garantir a sobreposição */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="text-center">
             <h1 className="font-inter font-bold text-4xl md:text-6xl mb-6">
@@ -121,10 +138,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* --- FIM DA ALTERAÇÃO --- */}
 
-
-      {/* Quem Somos + História */}
+      {/* O resto da sua página continua normalmente */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -132,7 +147,7 @@ const Home = () => {
               Quem Somos
             </h2>
             <p className="font-open-sans text-lg text-fb-blue-deep max-w-4xl mx-auto mb-8">
-              Com quase três décadasde atuação no mercado, a Facility & Bond acumula experiência na estruturação de seguros estratégicos e personalizados para grandes projetos.
+              Com quase três décadas de atuação no mercado, a Facility & Bond acumula experiência na estruturação de seguros estratégicos e personalizados para grandes projetos.
             </p>
             <Button 
               asChild
@@ -146,7 +161,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Apresentação: Nossos Produtos */}
+
       <section className="py-16 bg-fb-gray-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -194,7 +209,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Segmentos de Atuação */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -241,7 +255,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Hero Section - "Who" */}
       <section className="py-16 bg-fb-gray-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -272,9 +285,6 @@ const Home = () => {
         </div>
       </section>
 
-
-
-      {/* Clientes (Validação) */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -329,7 +339,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Entre em Contato */}
       <section className="py-16 bg-fb-blue-deep text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -355,4 +364,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
