@@ -100,7 +100,7 @@ const Footer = () => {
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 mt-1 text-gray-300" />
                 <span className="font-open-sans text-gray-300">
-                  Rua Pompéu Vairo, 123<br />
+                  Rua Pompeu Vairo, 123<br />
                   Atibaia, São Paulo, Brasil
                 </span>
               </div>
